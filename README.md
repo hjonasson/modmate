@@ -9,8 +9,10 @@ Modmate is a tool designed to assist forum moderators in flagging comments and r
 To install Modmate:
 
 1. Clone the repository.
-2. Run `npm install` to install all necessary dependencies.
-3. Run `npm run start`
+2. Add you Gemini API key to [`.env`](.env)
+3. Run `npm install` to install all necessary dependencies.
+4. Run `npm run start`
+5. Open up [http://localhost:5173/](http://localhost:5173/)
 
 To start using Modmate, simply run `npm run start` in the project directory. This will start the server and you can begin flagging and responding to comments.
 
