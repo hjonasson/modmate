@@ -2,7 +2,7 @@
   "name": "modmate",
   "version": "0.1.0",
   "scripts": {
-    "run": "vite"
+    "start": "vite"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

@@ -1,3 +1,23 @@
-# Modmate. An assistant for forum moderation.
+# 🕵️ Modmate. An assistant for forum moderation.
 
-This repo has an [Express](https://expressjs.com/) server serving a single web page. That page has a form where forum moderators can paste a forum message, get it flagged (or not) and get a tailored response back. That tailored response is created using prompts and Google's Gemini.
+## What is it?
+
+Modmate is a tool designed to assist forum moderators in flagging comments and responding to their authors. It leverages Google's Gemini to both flag comments and customise the moderator's responses. It is built with TypeScript, ExpressJS, TypeChat, and Vite.
+
+## Setup and usage
+
+To install Modmate:
+
+1. Clone the repository.
+2. Run `npm install` to install all necessary dependencies.
+3. Run `npm run start`
+
+To start using Modmate, simply run `npm run start` in the project directory. This will start the server and you can begin flagging and responding to comments.
+
+## Contributing
+
+Please do not use the code without permission.
+
+## License
+
+All rights reserved. Unauthorized use or distribution of the code is prohibited.
