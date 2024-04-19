@@ -1,39 +1,54 @@
 import express from "express";
-import { flagTemplateMap } from "./src/flags";
-import "./src/gemini";
-import { htmlContent, htmlResponse } from "./src/htmlContent";
+import bodyParser from "body-parser";
 import {
-  getClassification,
+  getClassifications,
   getCustomizedTemplate,
-} from "./src/getClassification";
-import { FlagDetection } from "./src/flag-detection/schema";
-
+} from "./src/clean-responses";
+import { htmlContent, htmlResponse } from "./src/htmlContent";
+import { flagTemplateMap } from "./src/flags";
 export const app = express();
 
+// This contrals whether the API response is an HTML file or a JSON object
+const appIsBackend = import.meta.env.VITE_API === "true";
+
 // Serve the static HTML content
-app.get("/", (_, res) => {
-  res.send(htmlContent());
-});
+!appIsBackend &&
+  app.get("/", (_, res) => {
+    res.send(htmlContent());
+  });
 
 // Parse URL-encoded bodies for POST requests
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Handle POST requests to the root route
 app.post("/", async (req, res) => {
   const { message, moderator } = req.body;
-  const flag = (await getClassification(message)) as FlagDetection["flag"];
-  const templateRewrite = await getCustomizedTemplate({
-    message,
-    moderator,
-    template: flagTemplateMap.get(flag) || "",
-  });
+  // First call to the LLM to classify the message
+  const flags = await getClassifications(message);
+
+  const templates = flags.map((flag) => flagTemplateMap.get(flag));
+
+  // Second call(s) to the LLM to get the template rewrite(s)
+  const templateRewrites = await Promise.all(
+    templates.map(async (template = "") =>
+      getCustomizedTemplate({
+        message,
+        moderator,
+        template,
+      })
+    )
+  );
 
   res.send(
-    htmlResponse({
-      flag,
-      templateRewrite,
-      message,
-      moderator,
-    })
+    appIsBackend
+      ? { templates: templateRewrites.join("\n\n---\n\n"), flags }
+      : htmlResponse({
+          flag: flags,
+          message,
+          moderator,
+          templateRewrite: templateRewrites.join("\n\n---\n\n"),
+        })
   );
 });

@@ -1,8 +1,10 @@
 export type FlagDetection = {
-  flag:
-    | "CommercialInterest"
-    | "Disrespectful"
-    | "MeetupSuggestion"
-    | "PersonallyIdentifyingInformation"
-    | "Spam";
+  flag: Flags[];
 };
+
+export type Flags =
+  | "CommercialInterest"
+  | "Disrespectful"
+  | "MeetupSuggestion"
+  | "PersonallyIdentifyingInformation"
+  | "Spam";

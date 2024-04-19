@@ -1,12 +1,12 @@
-# 🕵️ Modmate. An assistant for forum moderation.
+# 🕵️ ModMate. An assistant for forum moderation.
 
 ## What is it?
 
-Modmate is a tool designed to assist forum moderators in flagging comments and responding to their authors. It leverages Google's Gemini to both flag comments and customise the moderator's responses. It is built with TypeScript, ExpressJS, TypeChat, and Vite.
+ModMate is a tool designed to assist forum moderators in flagging comments and responding to their authors. It leverages Google's Gemini to both flag comments and customise the moderator's responses. It is built with TypeScript, ExpressJS, TypeChat, and Vite.
 
 ## Setup and usage
 
-To install Modmate:
+To install ModMate:
 
 1. Clone the repository.
 2. Create [`.env`](.env) and add you Gemini API key there as `VITE_API_KEY=yourkey` (generate it [here](https://makersuite.google.com/app/apikey))
@@ -14,7 +14,7 @@ To install Modmate:
 4. Run `npm run start`
 5. Open up [http://localhost:5173/](http://localhost:5173/)
 
-To start using Modmate, run `npm run start` in the project directory. This will start the server and you can begin flagging and responding to comments.
+To start using ModMate, run `npm run start` in the project directory. This will start the server and you can begin flagging and responding to comments.
 
 ## Contributing
 

@@ -28,7 +28,7 @@ export const customisedResponsePrompt = ({
   
   ${
     template
-      ? "Where there are square brackets you pick the right option from the angle bracket"
+      ? "Where there are square brackets you remove them and pick the right word or words to replace it with"
       : ""
   }You respond to a user who sent this forum post to another user:
   

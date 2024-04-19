@@ -1,10 +1,10 @@
-import { FlagDetection } from "./flag-detection/schema";
+import { FlagDetection, Flags } from "./flag-detection/schema";
 import { commercialInterestTemplate } from "./templates/commericalInterest";
 import { inconsiderateOrDisrespectfulTemplate } from "./templates/disrespectful";
 import { meetupTemplate } from "./templates/meetup";
 import { piiTemplate } from "./templates/piiTemplate";
 
-export const flags: FlagDetection["flag"][] = [
+export const flags: Flags[] = [
   "CommercialInterest",
   "Disrespectful",
   "MeetupSuggestion",
@@ -12,7 +12,7 @@ export const flags: FlagDetection["flag"][] = [
   "Spam",
 ] as const;
 
-export const flagTemplateMap = new Map<FlagDetection["flag"], string>([
+export const flagTemplateMap = new Map<Flags, string>([
   ["CommercialInterest", commercialInterestTemplate],
   ["Disrespectful", inconsiderateOrDisrespectfulTemplate],
   ["MeetupSuggestion", meetupTemplate],

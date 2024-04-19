@@ -11,11 +11,11 @@ export const htmlContent = (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>modemate</title>
+    <title>modmate</title>
 </head>
 <body onunload="">
     <div id="header-container">
-      <h1>Modmate</h1>
+      <h1>ModMate</h1>
     </div>
     <h2>Flagged message response template</h2>
     <p>Please give the message being flagged, a response template and your name.</p>
@@ -70,7 +70,7 @@ export const htmlResponse = ({
     `<label for="flag">Flag:</label>    
    <p name="flag" id="content">${flag}</p>` +
       `<label for="rewrite">Template rewrite:</label>
-    <textarea name="rewrite" rows="8" cols="200">${templateRewrite}</textarea>`,
+    <textarea name="rewrite" rows="20" cols="100">${templateRewrite}</textarea>`,
     moderator,
     message
   );

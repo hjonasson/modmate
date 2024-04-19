@@ -1,4 +1,4 @@
-import { FlagDetection } from "./flag-detection/schema";
+import { FlagDetection, Flags } from "./flag-detection/schema";
 import { flags } from "./flags";
 import { gemini } from "./gemini";
 import {
@@ -18,7 +18,6 @@ export const getPostClassificationCompletion = async ({
 }) => await gemini(classificationPrompt(message));
 
 // Required due to unreliably typed response from LLM
-export const extractFlagFromResponse = (
-  response: string
-): FlagDetection["flag"] | undefined =>
-  flags.find((f: FlagDetection["flag"]) => response.includes(f));
+export function extractFlagsFromResponse(response: string): Flags[] {
+  return flags.filter((f: Flags) => response.includes(f));
+}
